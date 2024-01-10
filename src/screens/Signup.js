@@ -74,7 +74,7 @@ const  onChange = (e)=>{setcredentials({...credentials,[e.target.name]:e.target.
     
                     <div className="text-grey-dark mt-6">
                         Already have an account? 
-                        <Link to="/login" className="text-md hover:text-green-500 duration-500"> Login</Link>
+                        <Link to="/loginuser" className="text-md hover:text-green-500 duration-500"> Login</Link>
                     </div>
                  
                 </div>

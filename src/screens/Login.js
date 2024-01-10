@@ -33,7 +33,11 @@ const Login = () => {
       alert("Enter valid credentials");
     }
     if (json.success) {
+      //before navigating to homepage after login we want to store the jwt token to our local storage of the current user
+      localStorage.setItem("authToken", json.authToken);
+      console.log(localStorage.getItem("authToken"));
       navigate("/");
+
     }
   };
   return (
