@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
-
+const cors = require("cors")
 const port = 5000;
 const mongoDb = require("./db");
+
+
+app.use(cors());
+
 mongoDb();
 
 app.get('/',(req,res)=>{
