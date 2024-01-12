@@ -42,7 +42,7 @@ const Home = () => {
 
 </div>
 
-      <div className="container ">
+      <div className="flex items-start p-5 gap-4 flex-wrap  justify-center  ">
         {foodCat.length > 0
           ? foodCat.map((data) => {
               return (
@@ -52,16 +52,14 @@ const Home = () => {
                   </div>
                   <hr />
                   
-                  {foodItem.length > 0 ? (
+                  {foodItem.length > 0  ? (
                     foodItem
                       .filter((item) => item.CategoryName === data.CategoryName && (item.name.toLowerCase().includes(search))) 
                       .map((filterItems) => {
                         return (
                           <div key={filterItems._id} className=""  >
-                            <Card foodName={filterItems.name}
-                            recipie={filterItems.description}
+                            <Card foodItem = {filterItems}
                             options={filterItems.options[0]}
-                            imgSrc={filterItems.img}
                             />
                           </div>
                         
