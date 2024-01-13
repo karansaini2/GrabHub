@@ -34,6 +34,8 @@ const Login = () => {
     }
     if (json.success) {
       //before navigating to homepage after login we want to store the jwt token to our local storage of the current user
+      //here we are storinf=g email for the checkout functionality
+      localStorage.setItem("userEmail",credentials.email);
       localStorage.setItem("authToken", json.authToken);
       console.log(localStorage.getItem("authToken"));
       navigate("/");

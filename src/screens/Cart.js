@@ -13,6 +13,65 @@ const Cart = () => {
             </div>
         )
       }
+
+
+      const handleCheckOut = async () => {
+        let userEmail = localStorage.getItem("userEmail");
+        
+        if (!userEmail) {
+            console.error("User email is missing");
+            return; // or handle the missing email case appropriately
+        }
+    
+        try {
+            let response = await fetch("http://localhost:5000/api/orderData", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    order_data: data,
+                    email: userEmail, // Ensure that userEmail is defined
+                    order_date: new Date().toDateString()
+                })
+            });
+    
+            console.log("JSON RESPONSE:::::", response.status);
+            
+            if (response.status === 200) {
+                dispatch({ type: "DROP" });
+            }
+        } catch (error) {
+            console.error("Error during API request:", error);
+        }
+    };
+    // const handleCheckOut = async () => {
+    //     let userEmail = localStorage.getItem("userEmail");
+    //     // console.log(data,localStorage.getItem("userEmail"),new Date())
+    //     if (!userEmail) {
+    //         console.error("User email is missing");
+    //         return; // or handle the missing email case appropriately
+    //     }
+    //     let response = await fetch("http://localhost:5000/api/orderData", {
+          
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       body: JSON.stringify({
+    //         order_data: data,
+    //         email: userEmail,
+    //         order_date: new Date().toDateString()
+    //       })
+    //     });
+    //     console.log("JSON RESPONSE:::::", response.status)
+    //     if (response.status === 200) {
+    //       dispatch({ type: "DROP" })
+    //     }
+    //   }
+    
+
+
       let totalPrice = data.reduce((total, food) => total + food.price, 0)
   return (
 <>
@@ -59,7 +118,7 @@ const Cart = () => {
     </table>
     <hr></hr>
     <div><h1 className='text-md mx-5 my-5'>Total Price: {totalPrice}/-</h1></div>
-    <button className='bg-green-600 mx-5 text-white rounded-md p-1.5 w-28' >Checkout</button>
+    <button className='bg-green-600 mx-5 text-white rounded-md p-1.5 w-28' onClick={handleCheckOut}>Checkout</button>
 
 </div>
 </>
