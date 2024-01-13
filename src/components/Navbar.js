@@ -26,7 +26,7 @@ const Navbar = () => {
         {localStorage.getItem("authToken") ? (
           <li className="mx-2">
             <Link
-              to="/cart"
+              to="/myorders"
               className="  text-xl hover:text-cyan-500 duration-500"
             >
               My Orders

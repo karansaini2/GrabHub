@@ -45,30 +45,7 @@ const Cart = () => {
             console.error("Error during API request:", error);
         }
     };
-    // const handleCheckOut = async () => {
-    //     let userEmail = localStorage.getItem("userEmail");
-    //     // console.log(data,localStorage.getItem("userEmail"),new Date())
-    //     if (!userEmail) {
-    //         console.error("User email is missing");
-    //         return; // or handle the missing email case appropriately
-    //     }
-    //     let response = await fetch("http://localhost:5000/api/orderData", {
-          
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify({
-    //         order_data: data,
-    //         email: userEmail,
-    //         order_date: new Date().toDateString()
-    //       })
-    //     });
-    //     console.log("JSON RESPONSE:::::", response.status)
-    //     if (response.status === 200) {
-    //       dispatch({ type: "DROP" })
-    //     }
-    //   }
+
     
 
 

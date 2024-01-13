@@ -34,6 +34,17 @@ router.post('/orderData',async(req,res)=>{
             res.status(500).send("Server Error: " + error.message);
         }
     }
+});
+
+router.post('/myorders',async(req,res)=>{
+    try {
+        //we will send the email from the frontend to backend
+        let myData = await Order.findOne({'email':req.body.email});
+
+        res.json({orderData : myData})
+    } catch (error) {
+        res.status(500).send("Server Error: " + error.message);
+    }
 })
 
 module.exports = router;
